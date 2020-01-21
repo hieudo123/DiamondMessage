@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">DiamondMessage</string>
+    <string name="welcome_title">Welcome</string>
+    <string name="welcome_description">Diamond message</string>
+    <string name="common_login_title">Login</string>
+    <string name="common_register_title">Register</string>
+    <string name="common_username">Username</string>
+    <string name="common_show">show</string>
+    <string name="common_password">Password</string>
+    <string name="common_email">Email</string>
 </resources>
