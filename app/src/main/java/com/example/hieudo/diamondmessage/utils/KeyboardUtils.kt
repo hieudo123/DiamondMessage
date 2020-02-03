@@ -11,60 +11,62 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 
 class KeyboardUtils {
-    @SuppressLint("ClickableViewAccessibility")
-    fun setupUI(view: View, activity: Activity) {
-        if (view !is EditText) {
-            view.setOnTouchListener { v: View?, event: MotionEvent? ->
-                val handler = Handler()
-                handler.postDelayed({ hideSoftKeyboard(activity) }, 30)
-                false
-            }
-        }
-        if (view is ViewGroup) {
-            for (i in 0 until view.childCount) {
-                val innerView = view.getChildAt(i)
-                setupUI(innerView, activity)
-            }
-        }
-    }
-
-    fun hideSoftKeyboard(activity: Activity) {
-        try {
-            val inputMethodManager = activity
-                .getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-            val view = activity.currentFocus
-            if (view != null && inputMethodManager != null) {
-                inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
-                if (view is EditText) {
-                    clearFocusEditText(arrayOf(view))
+    companion object{
+        @SuppressLint("ClickableViewAccessibility")
+        fun setupUI(view: View, activity: Activity) {
+            if (view !is EditText) {
+                view.setOnTouchListener { v: View?, event: MotionEvent? ->
+                    val handler = Handler()
+                    handler.postDelayed({ hideSoftKeyboard(activity) }, 30)
+                    false
                 }
             }
-        } catch (ignored: Exception) {
+            if (view is ViewGroup) {
+                for (i in 0 until view.childCount) {
+                    val innerView = view.getChildAt(i)
+                    setupUI(innerView, activity)
+                }
+            }
         }
-    }
 
-    private fun clearFocusEditText(editTexts: Array<EditText>) {
-        for (editText in editTexts) {
-            editText.clearFocus()
+        fun hideSoftKeyboard(activity: Activity) {
+            try {
+                val inputMethodManager = activity
+                    .getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+                val view = activity.currentFocus
+                if (view != null && inputMethodManager != null) {
+                    inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+                    if (view is EditText) {
+                        clearFocusEditText(arrayOf(view))
+                    }
+                }
+            } catch (ignored: Exception) {
+            }
         }
-    }
 
-    fun showSoftKeyboard(view: View?, activity: Activity) {
-        val imm =
-            activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
-    }
+        private fun clearFocusEditText(editTexts: Array<EditText>) {
+            for (editText in editTexts) {
+                editText.clearFocus()
+            }
+        }
 
-    fun showSoftKeyboardForEditText(editText: EditText, activity: Activity) {
-        editText.postDelayed({
-            editText.requestFocus()
-            editText.setSelection(editText.text.length)
+        fun showSoftKeyboard(view: View?, activity: Activity) {
             val imm =
                 activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.toggleSoftInput(
-                InputMethodManager.SHOW_IMPLICIT,
-                InputMethodManager.HIDE_IMPLICIT_ONLY
-            )
-        }, 300)
+            imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+        }
+
+        fun showSoftKeyboardForEditText(editText: EditText, activity: Activity) {
+            editText.postDelayed({
+                editText.requestFocus()
+                editText.setSelection(editText.text.length)
+                val imm =
+                    activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.toggleSoftInput(
+                    InputMethodManager.SHOW_IMPLICIT,
+                    InputMethodManager.HIDE_IMPLICIT_ONLY
+                )
+            }, 300)
+        }
     }
 }

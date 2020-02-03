@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/actionbar_home"
+        android:id="@+id/actionbar"/>
+
+    <com.appscyclone.aclibrary.view.ACRecyclerView
+        android:id="@+id/fragHome_rvUserList"
+        android:paddingStart="@dimen/_23dp"
+        android:paddingEnd="@dimen/_23dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:rv_scrollbars="none"/>
+
+</LinearLayout>

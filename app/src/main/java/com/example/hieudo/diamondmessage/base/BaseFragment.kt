@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.quickblox.users.model.QBUser
 
 abstract class BaseFragment : Fragment() {
     protected abstract fun getLayoutId(): Int
@@ -17,8 +18,12 @@ abstract class BaseFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(getLayoutId(), container, false)
-        initView(view)
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView(view)
     }
 
     open fun showLoading() {
@@ -33,4 +38,19 @@ abstract class BaseFragment : Fragment() {
         }
     }
 
+    open fun showActionbar(view: View?, title: String?){
+        if (activity is BaseActivity){
+            (activity as BaseActivity).showActionbar(view,title)
+        }
+    }
+
+    fun setCurrentUser (qbUser: QBUser){
+        if (activity is BaseActivity)
+            (activity as BaseActivity).setCurrentUser(qbUser)
+    }
+
+    fun getCurrentUser (): QBUser{
+        if (activity is BaseActivity) return (activity as BaseActivity?)!!.getCurrentUser()
+        return  QBUser()
+    }
 }

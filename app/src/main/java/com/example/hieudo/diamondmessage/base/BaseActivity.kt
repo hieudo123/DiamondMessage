@@ -1,13 +1,19 @@
 package com.example.hieudo.diamondmessage.base
 
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.hieudo.diamondmessage.R
 import com.kaopiz.kprogresshud.KProgressHUD
+import com.quickblox.users.model.QBUser
 
 abstract class BaseActivity : AppCompatActivity() {
 
     protected abstract fun  getLayoutId():Int
     protected abstract fun initView()
+    var onBackClick =
+        View.OnClickListener { view: View? -> onBackPressed() }
     private var mProgresDialog: KProgressHUD? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,4 +38,19 @@ abstract class BaseActivity : AppCompatActivity() {
     fun hideLoading(){
         mProgresDialog?.dismiss()
     }
+
+    fun showActionbar(view: View?, title: String?){
+        val tvTitle = view!!.findViewById<TextView>(R.id.actionbar_tvTitle)
+        val vBack = view.findViewById<View>(R.id.actionbar_imgBack)
+        if (tvTitle != null) {
+            tvTitle.text = title
+        }
+        vBack?.setOnClickListener(onBackClick)
+    }
+
+    fun setCurrentUser (qbUser: QBUser){
+        BaseApplication.getInstance().setCurrentUser(qbUser)
+    }
+
+    fun getCurrentUser ():QBUser = BaseApplication.getInstance().getCurrentUser()
 }

@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:gravity="center_vertical"
-    android:elevation="@dimen/_10dp"
-    android:paddingStart="@dimen/_16dp"
-    android:paddingEnd="@dimen/_16dp"
+    android:background="@color/white"
     android:layout_height="@dimen/_44dp">
 
     <ImageView
-        android:id="@+id/actionbar_ivBack"
-        android:background="@drawable/ic_arrow_left_black"
+        android:id="@+id/actionbar_imgBack"
+        android:background="@drawable/ic_arrow_back"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_29dp"/>
+
+    <TextView
+        android:id="@+id/actionbar_tvTitle"
+        android:text="@string/common_lastname"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:layout_marginStart="@dimen/_10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

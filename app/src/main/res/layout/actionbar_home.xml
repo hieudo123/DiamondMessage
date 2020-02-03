@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_44dp"
+    android:paddingStart="@dimen/_23dp"
+    android:paddingEnd="@dimen/_23dp"
+    android:elevation="@dimen/_1dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/actionbar_ivAvatar"
+        android:background="@drawable/ic_account_circle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="@dimen/_36dp"
+        android:layout_height="@dimen/_36dp"/>
+
+    <TextView
+        android:id="@+id/actionbar_tvTitle"
+        android:text="Hieu Do"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/actionbar_ivAvatar"
+        app:layout_constraintTop_toTopOf="@id/actionbar_ivAvatar"
+        app:layout_constraintBottom_toBottomOf="@id/actionbar_ivAvatar"
+        android:layout_marginStart="@dimen/_6dp"
+        android:textSize="24sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:background="@color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:paddingStart="@dimen/_23dp"
+    android:paddingEnd="@dimen/_23dp"
+    android:elevation="@dimen/_10dp"
+    android:layout_height="@dimen/_44dp">
+
+    <ImageView
+        android:id="@+id/actionbar_imgBack"
+        android:background="@drawable/ic_arrow_back"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_29dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/actionbar_tvTitle"
+        android:text="@string/common_lastname"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:layout_marginStart="@dimen/_10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/actionbar_imgBack"
+        app:layout_constraintTop_toTopOf="@id/actionbar_imgBack"
+        app:layout_constraintBottom_toBottomOf="@id/actionbar_imgBack"/>
+
+    <ImageView
+        android:id="@+id/actionbar_ivVideoCall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_videocam"
+        app:layout_constraintTop_toTopOf="@id/actionbar_imgBack"
+        app:layout_constraintBottom_toBottomOf="@id/actionbar_imgBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

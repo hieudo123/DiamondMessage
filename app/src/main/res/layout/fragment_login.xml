@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:focusable="true"
-    android:focusableInTouchMode="true">
+    android:focusableInTouchMode="true"
+    android:layout_marginStart="@dimen/_23dp"
+    android:layout_marginEnd="@dimen/_23dp">
     
     <include layout="@layout/actionbar_back"/>
 
@@ -14,11 +16,10 @@
         android:id="@+id/fragLogin_ivLogo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/_92dp"
+        android:layout_marginTop="@dimen/_64dp"
         android:background="@drawable/ic_logo_start_screen"
         android:layout_width="@dimen/_36dp"
-        android:layout_height="@dimen/_36dp"
-        android:layout_marginStart="@dimen/_23dp"/>
+        android:layout_height="@dimen/_36dp" />
 
     <TextView
         android:id="@+id/fragLogin_tvTitle"
@@ -41,8 +42,7 @@
         android:textColor="@color/black_3"
         android:textSize="18sp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:layout_marginStart="@dimen/_23dp"/>
+        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/fragLogin_etEmail"
@@ -51,13 +51,12 @@
         android:paddingTop="@dimen/_12dp"
         android:paddingBottom="@dimen/_12dp"
         android:textSize="26sp"
+        android:inputType="text"
         app:layout_constraintTop_toBottomOf="@+id/fragLogin_tvEmailTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="@dimen/_0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_23dp"
-        android:layout_marginEnd="@dimen/_23dp"/>
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/fragLogin_tvPasswordTitle"
@@ -68,8 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragLogin_etEmail"
-        android:layout_marginStart="@dimen/_23dp"/>
+        app:layout_constraintTop_toBottomOf="@id/fragLogin_etEmail" />
 
     <TextView
         android:id="@+id/fragLogin_tvShow"
@@ -79,8 +77,7 @@
         android:textColor="@color/black_3"
         android:textSize="18sp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_23dp"/>
+        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/fragLogin_etPassword"
@@ -94,23 +91,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="@dimen/_0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_23dp"
-        android:layout_marginEnd="@dimen/_23dp"/>
+        android:inputType="textPassword"/>
 
     <TextView
+        android:id="@+id/fragLogin_tvForgotPassword"
+        android:text="@string/auth_forgot_password_title"
+        android:textColor="@color/mainColor"
+        android:textSize="18sp"
+        android:layout_marginTop="@dimen/_12dp"
+        app:layout_constraintTop_toBottomOf="@id/fragLogin_etPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/fragLogin_tvLogin"
         android:gravity="center"
         android:textColor="@color/white"
         android:text="@string/common_login_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragLogin_etPassword"
-        android:layout_marginTop="@dimen/_24dp"
+        app:layout_constraintTop_toBottomOf="@id/fragLogin_tvForgotPassword"
+        android:layout_marginTop="@dimen/_16dp"
         android:textSize="20sp"
         android:background="@drawable/shape_login_button"
         android:layout_width="@dimen/_0dp"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_8dp"
-        android:layout_marginStart="@dimen/_23dp"
-        android:layout_marginEnd="@dimen/_23dp"/>
+        android:padding="@dimen/_8dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

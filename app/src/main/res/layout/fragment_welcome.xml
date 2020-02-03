@@ -23,7 +23,6 @@
         android:textColor="@color/mainColor"
         android:padding="@dimen/_8dp"
         android:layout_marginBottom="@dimen/_16dp"
-        android:elevation="@dimen/_4dp"
         android:layout_height="wrap_content"/>
 
     <TextView
@@ -39,7 +38,6 @@
         android:textColor="@color/white"
         android:padding="@dimen/_8dp"
         android:layout_marginBottom="@dimen/_16dp"
-        android:elevation="@dimen/_4dp"
         android:layout_height="wrap_content"/>
 
     <TextView

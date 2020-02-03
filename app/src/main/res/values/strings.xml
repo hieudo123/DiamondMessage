@@ -5,7 +5,18 @@
     <string name="common_login_title">Login</string>
     <string name="common_register_title">Register</string>
     <string name="common_username">Username</string>
-    <string name="common_show">show</string>
+    <string name="common_show">Show</string>
     <string name="common_password">Password</string>
     <string name="common_email">Email</string>
+    <string name="common_firstname">First name</string>
+    <string name="common_lastname">Last name</string>
+    <string name="common_hide">Hide</string>
+
+    <string name="auth_password_valid">Password is at least 8 characters.</string>
+    <string name="auth_email_valid">Email invalid</string>
+    <string name="auth_forgot_password_title">Forgot password</string>
+    <string name="auth_register_and_login">Register &amp; Login</string>
+    <string name="chat_detail_send_button_title">Send</string>
+    <string name="chat_detail_write_a_message">Write a message</string>
+
 </resources>
