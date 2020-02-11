@@ -9,9 +9,7 @@
         android:id="@+id/actionbar"/>
 
     <com.appscyclone.aclibrary.view.ACRecyclerView
-        android:id="@+id/fragHome_rvUserList"
-        android:paddingStart="@dimen/_23dp"
-        android:paddingEnd="@dimen/_23dp"
+        android:id="@+id/fragHome_rvChatList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:rv_scrollbars="none"/>

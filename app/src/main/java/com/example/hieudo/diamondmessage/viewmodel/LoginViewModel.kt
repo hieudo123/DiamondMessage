@@ -3,6 +3,7 @@ package com.example.hieudo.diamondmessage.viewmodel
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.hieudo.diamondmessage.base.BaseViewModel
 import com.example.hieudo.diamondmessage.utils.ValidationUtils
@@ -13,7 +14,6 @@ import com.quickblox.users.QBUsers
 import com.quickblox.users.model.QBUser
 
 class LoginViewModel: BaseViewModel() {
-    val loginReponse : MutableLiveData<QBUser> = MutableLiveData()
     val isValidation : MutableLiveData<Boolean> = MutableLiveData()
 
     fun checkEmailValid(email :String, password :String, context: Context) {
@@ -24,8 +24,9 @@ class LoginViewModel: BaseViewModel() {
             eventError.value = error
     }
 
-    fun login(email: String, password: String){
+    fun login(email: String, password: String) : LiveData<QBUser>{
         showLoading(true)
+        val loginReponse : MutableLiveData<QBUser> = MutableLiveData()
         val qbUserOrigin = QBUser()
         qbUserOrigin.email = email
         qbUserOrigin.password = password
@@ -53,5 +54,6 @@ class LoginViewModel: BaseViewModel() {
                 }
             }
         })
+        return loginReponse
     }
 }

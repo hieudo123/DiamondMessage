@@ -7,11 +7,13 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.hieudo.diamondmessage.R
 import com.example.hieudo.diamondmessage.base.BaseFragment
+import com.example.hieudo.diamondmessage.data.models.UserModel
 import com.example.hieudo.diamondmessage.others.constant.AppConstant
 import com.example.hieudo.diamondmessage.utils.KeyboardUtils
 import com.example.hieudo.diamondmessage.utils.SharePrefUtils
 import com.example.hieudo.diamondmessage.viewmodel.LoginViewModel
 import com.example.hieudo.diamondmessage.viewmodel.RegisterViewModel
+import com.example.hieudo.diamondmessage.viewmodel.UsersViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : BaseFragment(), View.OnClickListener {
@@ -33,18 +35,12 @@ class LoginFragment : BaseFragment(), View.OnClickListener {
     }
 
     private fun setUpLoginViewModel(viewModel: LoginViewModel) {
-        viewModel.loginReponse.observe(this, Observer {
-            SharePrefUtils.setString(this.context!!, AppConstant.EMAIL,it.email)
-            SharePrefUtils.setString(this.context!!, AppConstant.PASSWORD,it.password)
-            setCurrentUser(it)
-            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-        })
         viewModel.eventError.observe(this, Observer {
             Toast.makeText(context!!,it,Toast.LENGTH_SHORT).show()
         })
         viewModel.isValidation.observe(this, Observer {
             if (it){
-                viewModel.login(fragLogin_etEmail.text.toString(),fragLogin_etPassword.text.toString())
+                login()
             }
         })
         viewModel.eventShowLoading.observe(this, Observer {
@@ -52,6 +48,13 @@ class LoginFragment : BaseFragment(), View.OnClickListener {
                 showLoading()
             else
                 hideLoading()
+        })
+    }
+
+    private fun login() {
+        loginViewModel.login(fragLogin_etEmail.text.toString(),fragLogin_etPassword.text.toString()).observe(this, Observer {
+            setCurrentUser(it)
+            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
         })
     }
 

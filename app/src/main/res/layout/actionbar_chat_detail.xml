@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:paddingStart="@dimen/_23dp"
     android:paddingEnd="@dimen/_23dp"
-    android:elevation="@dimen/_10dp"
+    android:elevation="@dimen/_2dp"
     android:layout_height="@dimen/_44dp">
 
     <ImageView

@@ -55,6 +55,8 @@ class RegisterViewModel : BaseViewModel() {
         qbUserOrigin.password = password
         QBUsers.signIn(qbUserOrigin).performAsync(object : QBEntityCallback<QBUser> {
             override fun onSuccess(qbUser: QBUser?, bundle: Bundle?) {
+                qbUserOrigin.fullName = qbUser!!.fullName
+                qbUserOrigin.id = qbUser.id
                 QBChatService.getInstance().login(qbUserOrigin, object : QBEntityCallback<Any?> {
                     override fun onSuccess(o: Any?, bundle: Bundle) {
                         showLoading(false)

@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.hieudo.diamondmessage.R
+import com.example.hieudo.diamondmessage.data.models.UserModel
 import com.kaopiz.kprogresshud.KProgressHUD
 import com.quickblox.users.model.QBUser
 
@@ -45,6 +46,7 @@ abstract class BaseActivity : AppCompatActivity() {
         if (tvTitle != null) {
             tvTitle.text = title
         }
+
         vBack?.setOnClickListener(onBackClick)
     }
 
@@ -52,5 +54,5 @@ abstract class BaseActivity : AppCompatActivity() {
         BaseApplication.getInstance().setCurrentUser(qbUser)
     }
 
-    fun getCurrentUser ():QBUser = BaseApplication.getInstance().getCurrentUser()
+    fun getCurrentUser (): UserModel? = BaseApplication.getInstance().getCurrentUser()
 }

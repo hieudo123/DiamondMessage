@@ -1,9 +1,12 @@
 package com.example.hieudo.diamondmessage.ui
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.NavOptions
+import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.fragment.findNavController
 import com.example.hieudo.diamondmessage.R
 import com.example.hieudo.diamondmessage.base.BaseFragment
@@ -22,24 +25,17 @@ class StartScreenFragment : BaseFragment() {
     }
 
     override fun initView(view: View?) {
-        setUpRegisterQBViewModel()
-    }
-
-    private fun setUpRegisterQBViewModel() {
-        registerQBViewModel = ViewModelProviders.of(this).get(RegisterQBViewModel::class.java)
-        registerQBViewModel!!.registerSession()
-        registerQBViewModel!!.eventError.observe(this, Observer {
-
-        })
-        registerQBViewModel!!.registerQBReponse.observe(this, Observer {
-            if (it != null){
-                if (!SharePrefUtils.getString(context!!,AppConstant.EMAIL).isNullOrEmpty()
-                    && !SharePrefUtils.getString(context!!,AppConstant.PASSWORD).isNullOrEmpty()){
-                    findNavController().navigate(R.id.action_startScreenFragment_to_homeFragment)
+        val handler = Handler()
+        handler.postDelayed(object :Runnable{
+            override fun run() {
+                if (SharePrefUtils.getUser(context).id != 0){
+                    val graph = findNavController().graph
+                    graph.startDestination = R.id.homeFragment
+                    findNavController().graph = graph
                 }
                 else
-                    findNavController().navigate(R.id.action_startScreenFragment_to_welcomeFragment)
-            }
-        })
+                    findNavController().navigate(R.id.action_startScreenFragment_to_welcomeFragment)            }
+        },3000)
+
     }
 }

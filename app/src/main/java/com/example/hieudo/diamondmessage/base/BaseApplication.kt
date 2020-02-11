@@ -1,14 +1,16 @@
 package com.example.hieudo.diamondmessage.base
 
 import android.app.Application
+import com.example.hieudo.diamondmessage.data.models.UserModel
 import com.example.hieudo.diamondmessage.others.constant.AppConstant
+import com.example.hieudo.diamondmessage.utils.SharePrefUtils
 import com.quickblox.auth.session.QBSettings
 import com.quickblox.core.StoringMechanism
 import com.quickblox.users.model.QBUser
 
 
 class BaseApplication: Application() {
-    private lateinit var qbUser :QBUser
+    private  var userModel :UserModel ?= null
     companion object {
         private lateinit var instance: BaseApplication
 
@@ -26,11 +28,16 @@ class BaseApplication: Application() {
         QBSettings.getInstance().storingMehanism = StoringMechanism.UNSECURED
         QBSettings.getInstance().init(applicationContext, AppConstant.APPLICATION_ID, AppConstant.AUTH_KEY, AppConstant.AUTH_SECRET);
         QBSettings.getInstance().accountKey = AppConstant.ACCOUNT_KEY
+
+        if (SharePrefUtils.getUser(applicationContext).id!=0){
+            userModel = SharePrefUtils.getUser(applicationContext)
+        }
     }
 
     fun setCurrentUser(qbUser: QBUser) {
-        this.qbUser = qbUser
+        userModel = UserModel(qbUser.id,qbUser.email,qbUser.password,qbUser.fullName)
+        SharePrefUtils.saveUser(userModel!!,applicationContext)
     }
 
-    fun getCurrentUser (): QBUser = this.qbUser
+    fun getCurrentUser (): UserModel? = userModel
 }

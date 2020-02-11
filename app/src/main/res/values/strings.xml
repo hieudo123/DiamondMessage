@@ -2,6 +2,7 @@
     <string name="app_name">DiamondMessage</string>
     <string name="welcome_title">Welcome</string>
     <string name="welcome_description">Diamond message</string>
+
     <string name="common_login_title">Login</string>
     <string name="common_register_title">Register</string>
     <string name="common_username">Username</string>
@@ -16,7 +17,17 @@
     <string name="auth_email_valid">Email invalid</string>
     <string name="auth_forgot_password_title">Forgot password</string>
     <string name="auth_register_and_login">Register &amp; Login</string>
+
     <string name="chat_detail_send_button_title">Send</string>
     <string name="chat_detail_write_a_message">Write a message</string>
+
+    <string name="setting_logout_title">Log out</string>
+    <string name="setting_account_title">Account setting</string>
+    <string name="setting_language_title">Language</string>
+    <string name="setting_about_us_title">About us</string>
+    <string name="setting_notifications_title">Notifications</string>
+    <string name="setting_title">Settings</string>
+    <string name="menu_chat">Chat</string>
+    <string name="menu_users">Users</string>
 
 </resources>

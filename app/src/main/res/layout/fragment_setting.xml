@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:paddingStart="@dimen/_23dp"
+    android:paddingEnd="@dimen/_23dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/actionbar_title"
+        android:id="@+id/actionbar"/>
+
+    <TextView
+        android:id="@+id/fragSetting_tvAccountSetting"
+        android:layout_marginTop="@dimen/_50dp"
+        android:paddingTop="@dimen/_20dp"
+        android:paddingBottom="@dimen/_20dp"
+        android:text="@string/setting_account_title"
+        android:textColor="@color/black_3"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:background="@color/grey_three"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1dp"/>
+
+    <TextView
+        android:id="@+id/fragSetting_tvLanguageSetting"
+        android:paddingTop="@dimen/_20dp"
+        android:paddingBottom="@dimen/_20dp"
+        android:text="@string/setting_language_title"
+        android:textColor="@color/black_3"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:background="@color/grey_three"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1dp"/>
+
+    <TextView
+        android:id="@+id/fragSetting_tvNotifications"
+        android:paddingTop="@dimen/_20dp"
+        android:paddingBottom="@dimen/_20dp"
+        android:text="@string/setting_notifications_title"
+        android:textColor="@color/black_3"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:background="@color/grey_three"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1dp"/>
+
+    <TextView
+        android:id="@+id/fragSetting_tvAboutUs"
+        android:paddingTop="@dimen/_20dp"
+        android:paddingBottom="@dimen/_20dp"
+        android:text="@string/setting_about_us_title"
+        android:textColor="@color/black_3"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:background="@color/grey_three"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1dp"/>
+
+    <TextView
+        android:id="@+id/fragSetting_tvLogout"
+        android:paddingTop="@dimen/_20dp"
+        android:paddingBottom="@dimen/_20dp"
+        android:text="@string/setting_logout_title"
+        android:textColor="@color/black_3"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:background="@color/grey_three"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1dp"/>
+
+</LinearLayout>

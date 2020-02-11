@@ -10,5 +10,10 @@
     <color name="hint_color">#33ffffff</color>
     <color name="greyish">#a3a3a3</color>
     <color name="grey_three">#f1f1f3</color>
+    <color name="bon_jour">#dbd8db</color>
     <color name="green_3">#00CD00</color>
+    <color name="greyish_brown_four">#494949</color>
+    <color name="warm_grey_three">#7f7f7f</color>
+    <color name="white_three">#e9e9e9</color>
+
 </resources>

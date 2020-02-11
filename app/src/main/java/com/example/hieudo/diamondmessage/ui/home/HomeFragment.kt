@@ -4,71 +4,93 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.appscyclone.aclibrary.view.ACRecyclerView
 import com.example.hieudo.diamondmessage.R
 import com.example.hieudo.diamondmessage.base.BaseFragment
+import com.example.hieudo.diamondmessage.others.adapters.ListChatAdapter
+import com.example.hieudo.diamondmessage.others.adapters.UsersAdapter
 import com.example.hieudo.diamondmessage.others.constant.AppConstant
+import com.example.hieudo.diamondmessage.others.interfaces.ItemUserClickListener
+import com.example.hieudo.diamondmessage.others.interfaces.itemChatClickListener
 import com.example.hieudo.diamondmessage.utils.SharePrefUtils
-import com.example.hieudo.diamondmessage.viewmodel.LoginViewModel
-import com.example.hieudo.diamondmessage.viewmodel.UsersViewModel
+import com.example.hieudo.diamondmessage.viewmodel.HomeViewModel
 import com.quickblox.chat.QBChatService
+import com.quickblox.chat.model.QBChatDialog
 import com.quickblox.users.model.QBUser
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlin.collections.ArrayList
 
-class HomeFragment : BaseFragment() {
-    private lateinit var loginViewModel: LoginViewModel
-    private var usersViewModel : UsersViewModel ?= null
+
+class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener, itemChatClickListener,
+    ACRecyclerView.OnLoadMoreListener {
+    private var isLoadMore: Boolean = false
+    private var homeViewModel : HomeViewModel ?= null
+    private var adapter : ListChatAdapter ?= null
+    private var qbChatDialogs : MutableList<QBChatDialog>  = ArrayList()
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_home
     }
 
     override fun initView(view: View?) {
-        showActionbar(view,"")
+        init(view)
+        setUp()
+    }
+
+    private fun setUp() {
         setUpUsersViewModel()
-        setUpLoginViewModel()
+        setUpRecyclerView(qbChatDialogs)
+    }
+
+    private fun init(view: View?) {
+        showActionbar(view,getCurrentUser()!!.fullname)
+
+    }
+
+    private fun setUpRecyclerView(data: MutableList<QBChatDialog>) {
+        adapter = ListChatAdapter(data)
+        adapter!!.setItemChatClickListener(this)
+        fragHome_rvChatList.setLayoutManager(LinearLayoutManager(context))
+        fragHome_rvChatList.setHasFixedSize(true)
+        fragHome_rvChatList.adapter = adapter
+        fragHome_rvChatList.setRefresh(this)
+        fragHome_rvChatList.setLoadMore(this)
     }
 
     private fun setUpUsersViewModel() {
-        usersViewModel = ViewModelProviders.of(this).get(UsersViewModel::class.java)
-        usersViewModel!!.qbUsersList.observe(this, Observer {
-
+        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+//        homeViewModel!!.getListDialog(isRefresh = true, isLoadMore = false)
+        homeViewModel!!.getqbChatDialogsReponse().observe(this, Observer {
+            qbChatDialogs.clear()
+            qbChatDialogs.addAll(it)
+            fragHome_rvChatList.isRefreshing = false
+            adapter!!.notifyDataSetChanged()
         })
-        usersViewModel!!.eventShowLoading.observe(this, Observer {
+        homeViewModel!!.eventShowLoading.observe(this, Observer {
             if (it)
                 showLoading()
             else
                 hideLoading()
         })
-        usersViewModel!!.eventError.observe(this, Observer {
+        homeViewModel!!.eventError.observe(this, Observer {
             Toast.makeText(context!!,it,Toast.LENGTH_SHORT).show()
         })
     }
 
-    private fun setUpLoginViewModel() {
-        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
-        val email = SharePrefUtils.getString(context,AppConstant.EMAIL)
-        val password = SharePrefUtils.getString(context,AppConstant.PASSWORD)
-        if (!email.isNullOrEmpty() && !password.isNullOrEmpty()){
-            if (!QBChatService.getInstance().isLoggedIn)
-                loginViewModel.login(email,password)
-        }
-        loginViewModel.loginReponse.observe(this, Observer {
-            handlerUserData(it)
-        })
-        loginViewModel.eventError.observe(this, Observer {
-            Toast.makeText(context!!,it,Toast.LENGTH_SHORT).show()
-        })
-        loginViewModel.eventShowLoading.observe(this, Observer {
-            if (it)
-                showLoading()
-            else
-                hideLoading()
-        })
+    override fun onRefresh() {
+        homeViewModel!!.getListDialog(true,false)
     }
 
-    private fun handlerUserData(it: QBUser?) {
-        SharePrefUtils.setString(this.context!!, AppConstant.EMAIL,it!!.email)
-        SharePrefUtils.setString(this.context!!, AppConstant.PASSWORD,it.password)
-        showActionbar(view,it.fullName)
-        setCurrentUser(it)
+    override fun onItemClickListener(qbChatDialog: QBChatDialog) {
+        setQbChatDialog(qbChatDialog)
+        findNavController().navigate(R.id.action_homeFragment_to_chatDetailFragment)
     }
+
+    override fun onLoadMore() {
+        isLoadMore = true
+    }
+
 }

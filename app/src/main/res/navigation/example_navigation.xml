@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/example_navigation"
+    app:startDestination="@id/homeFragment2">
+
+    <fragment
+        android:id="@+id/homeFragment2"
+        android:name="com.example.hieudo.diamondmessage.ui.home.HomeFragment"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/settingFragment2"
+        android:name="com.example.hieudo.diamondmessage.ui.setting.SettingFragment"
+        android:label="SettingFragment" />
+    <fragment
+        android:id="@+id/usersFragment2"
+        android:name="com.example.hieudo.diamondmessage.ui.UsersFragment"
+        android:label="UsersFragment" />
+</navigation>

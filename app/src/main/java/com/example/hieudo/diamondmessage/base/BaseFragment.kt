@@ -1,10 +1,15 @@
 package com.example.hieudo.diamondmessage.base
 
 import android.os.Bundle
+import android.os.UserManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.hieudo.diamondmessage.MainActivity
+import com.example.hieudo.diamondmessage.data.models.UserModel
+import com.quickblox.chat.model.QBChatDialog
 import com.quickblox.users.model.QBUser
 
 abstract class BaseFragment : Fragment() {
@@ -49,8 +54,13 @@ abstract class BaseFragment : Fragment() {
             (activity as BaseActivity).setCurrentUser(qbUser)
     }
 
-    fun getCurrentUser (): QBUser{
+    fun getCurrentUser (): UserModel? {
         if (activity is BaseActivity) return (activity as BaseActivity?)!!.getCurrentUser()
-        return  QBUser()
+        return  null
+    }
+
+    fun setQbChatDialog(qbChatDialog: QBChatDialog){
+        if(activity is MainActivity)
+            (activity as MainActivity).setQbChatDialog(qbChatDialog)
     }
 }

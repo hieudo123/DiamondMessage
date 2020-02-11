@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/_10dp"
+    android:paddingBottom="@dimen/_10dp"
+    tools:ignore="MissingPrefix">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/itemListChat_ctForeground"
+        android:paddingStart="@dimen/_23dp"
+        android:paddingEnd="@dimen/_23dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/itemListChat_ivAvatar"
+            android:src="@drawable/ic_account_circle"
+            android:layout_width="@dimen/_56dp"
+            android:layout_height="@dimen/_56dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginStart="@dimen/_8dp"
+            app:layout_constraintStart_toEndOf="@id/itemListChat_ivAvatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/itemListChat_ivAvatar"
+            app:layout_constraintBottom_toBottomOf="@id/itemListChat_ivAvatar"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/itemListChat_tvName"
+                android:textSize="18sp"
+                tools:text="Kerry"
+                android:layout_width="@dimen/_0dp"
+                android:layout_marginEnd="@dimen/_10dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/greyish_brown_four"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/itemListChat_tvChatTime" />
+
+            <TextView
+                android:id="@+id/itemListChat_tvLastMessage"
+                android:textSize="18sp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="@color/warm_grey_three"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                tools:text="Thank you for contacting me. Iwill let you know when I can ..."
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/itemListChat_tvName"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/_4dp"
+                android:layout_marginEnd="@dimen/_10dp"
+                />
+
+            <TextView
+                android:id="@+id/itemListChat_tvChatTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/warm_grey_three"
+                android:lineSpacingExtra="40.3sp"
+                android:gravity="end"
+                tools:text="4:23pm"
+                android:layout_marginEnd="@dimen/_10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/itemListChat_tvName" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
+            android:visibility="gone"
+            android:id="@+id/itemListChat_frUnreadCount"
+            android:background="@drawable/shape_oval_green"
+            app:layout_constraintTop_toTopOf="@id/itemListChat_ivAvatar"
+            app:layout_constraintEnd_toEndOf="@id/itemListChat_ivAvatar"
+            android:layout_width="@dimen/_21dp"
+            android:layout_height="@dimen/_21dp">
+
+            <TextView
+                android:id="@+id/itemListChat_tvUnreadCount"
+
+                android:textSize="13sp"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
