@@ -91,7 +91,6 @@
 
             <TextView
                 android:id="@+id/itemListChat_tvUnreadCount"
-
                 android:textSize="13sp"
                 android:textColor="@color/white"
                 android:layout_gravity="center"

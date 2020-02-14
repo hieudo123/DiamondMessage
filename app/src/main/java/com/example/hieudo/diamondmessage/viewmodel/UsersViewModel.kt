@@ -20,6 +20,11 @@ import com.quickblox.users.model.QBUser
 class UsersViewModel : BaseViewModel() {
     private val qbUsersListReponse : MutableLiveData<MutableList<QBUser>> = MutableLiveData()
 
+    init {
+        showLoading(true)
+        getAllUser()
+    }
+
     fun login(email: String, password: String) : LiveData<QBUser>{
         showLoading(true)
         val loginReponse = MutableLiveData<QBUser>()
@@ -52,7 +57,7 @@ class UsersViewModel : BaseViewModel() {
         return loginReponse
     }
 
-    fun getAllUser(){
+    private fun getAllUser(){
         val qbPagedRequestBuilder = QBPagedRequestBuilder()
         qbPagedRequestBuilder.page = 1
         qbPagedRequestBuilder.perPage = 50

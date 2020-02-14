@@ -8,7 +8,6 @@ import com.example.hieudo.diamondmessage.base.BaseViewModel
 import com.quickblox.chat.QBChatService
 import com.quickblox.chat.QBRestChatService
 import com.quickblox.chat.model.QBChatDialog
-import com.quickblox.chat.utils.DialogUtils
 import com.quickblox.core.QBEntityCallback
 import com.quickblox.core.exception.QBResponseException
 import com.quickblox.core.request.QBRequestGetBuilder
@@ -61,30 +60,6 @@ class HomeViewModel : BaseViewModel() {
         return loginReponse
     }
 
-    fun createPrivateChat (userId : Int): LiveData<QBChatDialog>{
-        showLoading(true)
-        val qbChatDialogReponse : MutableLiveData<QBChatDialog> = MutableLiveData()
-        if (QBChatService.getInstance().isLoggedIn){
-            val occupantIdList = ArrayList<Int>()
-            occupantIdList.add(QBChatService.getInstance().user.id)
-            occupantIdList.add(userId)
-            var qbChatDialog = QBChatDialog()
-            qbChatDialog.setOccupantsIds(occupantIdList)
-            qbChatDialog = DialogUtils.buildPrivateDialog(userId)
-            QBRestChatService.createChatDialog(qbChatDialog).performAsync(object : QBEntityCallback<QBChatDialog>{
-                override fun onSuccess(qbChatDialog: QBChatDialog?, p1: Bundle?) {
-                    showLoading(false)
-                    qbChatDialogReponse.postValue(qbChatDialog)
-                }
-                override fun onError(e: QBResponseException?) {
-                    showLoading(false)
-                    eventError.postValue(e!!.message)
-                }
-            })
-        }
-        return qbChatDialogReponse
-    }
-
     fun getListDialog(isRefresh : Boolean,isLoadMore: Boolean) {
         val qbDialogRequestBuilder = QBRequestGetBuilder()
         qbDialogRequestBuilder.limit = limit
@@ -108,7 +83,6 @@ class HomeViewModel : BaseViewModel() {
     }
 
     private fun getDialogHasLastMessage(qbChatDialogs: ArrayList<QBChatDialog?>?) {
-
         for (i in qbChatDialogs!!.indices) {
             if (qbChatDialogs[i]!!.lastMessage != null) {
                 data.add(qbChatDialogs[i]!!)

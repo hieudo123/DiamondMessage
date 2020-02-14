@@ -11,6 +11,7 @@ class AppConstant {
         const val AUTH_SECRET = "7d8NK-9reaVnmbt"
         const val ACCOUNT_KEY = "XBnWKn771jouJCyiVH6T"
         const val EXTRA_LOGIN_RESULT_CODE = 1002
-
+        const val ITEM_SEND_MESSAGE_TYPE: Int = 0
+        const val ITEM_RECEIVE_MESSAGE_TYPE : Int = 1
     }
 }

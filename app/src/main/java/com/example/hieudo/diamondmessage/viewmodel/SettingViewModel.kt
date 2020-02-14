@@ -1,6 +1,7 @@
 package com.example.hieudo.diamondmessage.viewmodel
 
 import android.os.Bundle
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.hieudo.diamondmessage.base.BaseViewModel
 import com.quickblox.chat.QBChatService
@@ -9,10 +10,11 @@ import com.quickblox.core.exception.QBResponseException
 import com.quickblox.users.QBUsers
 
 class SettingViewModel : BaseViewModel() {
-    val qbLogOutReponse : MutableLiveData<Boolean> = MutableLiveData()
 
-    fun logOut(){
+
+    fun logOut() : LiveData<Boolean>{
         showLoading(true)
+        val qbLogOutReponse : MutableLiveData<Boolean> = MutableLiveData()
         if (QBChatService.getInstance().isLoggedIn){
             QBChatService.getInstance().logout(object : QBEntityCallback<Void>{
                 override fun onSuccess(p0: Void?, p1: Bundle?) {
@@ -34,5 +36,6 @@ class SettingViewModel : BaseViewModel() {
                 }
             })
         }
+        return qbLogOutReponse
     }
 }

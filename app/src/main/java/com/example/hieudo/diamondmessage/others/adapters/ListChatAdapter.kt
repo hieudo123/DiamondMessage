@@ -23,9 +23,7 @@ class ListChatAdapter : ACBaseAdapter<ACRecyclerView.ACBaseViewHolder<*>> {
     }
     override fun onCreateBaseViewHolder(parent: ViewGroup?, viewType: Int): ACRecyclerView.ACBaseViewHolder<*> {
         val view : View = LayoutInflater.from(parent!!.context).inflate(R.layout.item_list_chat,parent,false)
-        return ListChatViewHolder(
-            view
-        )
+        return ListChatViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ACRecyclerView.ACBaseViewHolder<*>, position: Int) {

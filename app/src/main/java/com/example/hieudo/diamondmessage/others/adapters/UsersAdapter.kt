@@ -23,7 +23,7 @@ class UsersAdapter : ACBaseAdapter<ACRecyclerView.ACBaseViewHolder<*>> {
         return super.getItemViewType(position)
     }
     override fun getItemCount(): Int {
-        return usersData?.size ?: 0
+        return usersData.size
     }
 
     fun setItemUserClickListener(itemUserClickListener : ItemUserClickListener){

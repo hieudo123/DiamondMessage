@@ -1,20 +1,20 @@
-package com.example.hieudo.diamondmessage
+package com.example.hieudo.diamondmessage.ui
 
 import android.annotation.SuppressLint
 import android.os.Build.VERSION.SDK_INT
 import android.os.Build.VERSION_CODES.M
 import android.util.Log
 import android.view.View
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupWithNavController
+import com.example.hieudo.diamondmessage.R
 import com.example.hieudo.diamondmessage.base.BaseActivity
 import com.example.hieudo.diamondmessage.others.service.LoginService
 import com.example.hieudo.diamondmessage.viewmodel.MainViewModel
+import com.quickblox.chat.QBChatService
 import com.quickblox.chat.model.QBChatDialog
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity() {
     private lateinit var mainViewModel: MainViewModel
     lateinit var navController: NavController
-    lateinit var appBarConfiguration : AppBarConfiguration
+
     override fun getLayoutId(): Int {
         return R.layout.activity_main
     }
@@ -37,12 +37,19 @@ class MainActivity : BaseActivity() {
     }
 
     private fun startLoginService() {
-        LoginService.Companion.start(this)
+        if (!QBChatService.getInstance().isLoggedIn)
+            LoginService.Companion.start(this)
     }
     private fun setMainVIewModel() {
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         mainViewModel.inCommingMessage()
-        mainViewModel.addSessionListener()
+        mainViewModel.addConnectionListener()
+        mainViewModel.eventShowLoading.observe(this, Observer {
+            if(it)
+                showLoading()
+            else
+                hideLoading()
+        })
     }
 
     private fun setUpNavController() {
@@ -59,6 +66,15 @@ class MainActivity : BaseActivity() {
                 }
                 R.id.chatDetailFragment ->{
                     showNavMenu(false)
+                }
+                R.id.welcomeFragment ->{
+                    showNavMenu(false)
+                }
+                R.id.usersFragment ->{
+                    showNavMenu(true)
+                }
+                R.id.settingFragment ->{
+                    showNavMenu(true)
                 }
             }
         }

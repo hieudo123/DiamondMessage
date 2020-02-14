@@ -10,15 +10,14 @@
         android:id="@+id/actionbar"/>
 
     <com.appscyclone.aclibrary.view.ACRecyclerView
+        android:id="@+id/fragChatDetail_rvMessages"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/actionbar"
         app:layout_constraintBottom_toTopOf="@id/fragChatDetail_ctInputBox"
         app:rv_scrollbars="none"
         android:layout_width="@dimen/_0dp"
-        android:layout_height="@dimen/_0dp"
-        android:layout_marginStart="@dimen/_23dp"
-        android:layout_marginEnd="@dimen/_23dp"/>
+        android:layout_height="@dimen/_0dp" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -88,7 +88,7 @@
     </fragment>
     <fragment
         android:id="@+id/usersFragment"
-        android:name="com.example.hieudo.diamondmessage.ui.UsersFragment"
+        android:name="com.example.hieudo.diamondmessage.ui.user.UsersFragment"
         android:label="UsersFragment"
         tools:layout="@layout/fragment_users">
         <action

@@ -13,6 +13,6 @@
         android:label="SettingFragment" />
     <fragment
         android:id="@+id/usersFragment2"
-        android:name="com.example.hieudo.diamondmessage.ui.UsersFragment"
+        android:name="com.example.hieudo.diamondmessage.ui.user.UsersFragment"
         android:label="UsersFragment" />
 </navigation>

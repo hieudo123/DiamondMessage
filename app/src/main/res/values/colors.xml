@@ -15,5 +15,7 @@
     <color name="greyish_brown_four">#494949</color>
     <color name="warm_grey_three">#7f7f7f</color>
     <color name="white_three">#e9e9e9</color>
+    <color name="white_50">#80ffffff</color>
+    <color name="white_custome_1">#F1F0F0</color>
 
 </resources>

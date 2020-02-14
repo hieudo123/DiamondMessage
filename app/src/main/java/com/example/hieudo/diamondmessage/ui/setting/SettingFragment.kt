@@ -27,10 +27,7 @@ class SettingFragment : BaseFragment(), View.OnClickListener {
 
     private fun setUpSettingViewModel() {
         settingViewModel = ViewModelProviders.of(this).get(SettingViewModel::class.java)
-        settingViewModel.qbLogOutReponse.observe(this, Observer {
-            if (it)
-                removeData()
-        })
+
         settingViewModel.eventShowLoading.observe(this, Observer {
             if (it)
                 showLoading()
@@ -57,6 +54,9 @@ class SettingFragment : BaseFragment(), View.OnClickListener {
     }
 
     private fun logout() {
-        settingViewModel.logOut()
+        settingViewModel.logOut().observe(this, Observer {
+            if (it)
+                removeData()
+        })
     }
 }

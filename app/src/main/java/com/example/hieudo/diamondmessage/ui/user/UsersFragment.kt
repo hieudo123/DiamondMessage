@@ -1,9 +1,7 @@
-package com.example.hieudo.diamondmessage.ui
+package com.example.hieudo.diamondmessage.ui.user
 
 import android.view.View
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
-import androidx.activity.addCallback
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -15,7 +13,6 @@ import com.example.hieudo.diamondmessage.others.adapters.UsersAdapter
 import com.example.hieudo.diamondmessage.others.interfaces.ItemUserClickListener
 import com.example.hieudo.diamondmessage.viewmodel.UsersViewModel
 import com.quickblox.users.model.QBUser
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_users.*
 
 class UsersFragment : BaseFragment(), ItemUserClickListener, SwipeRefreshLayout.OnRefreshListener {
@@ -34,8 +31,6 @@ class UsersFragment : BaseFragment(), ItemUserClickListener, SwipeRefreshLayout.
 
     private fun setUpUsersViewModel() {
         usersViewModel = ViewModelProviders.of(this).get(UsersViewModel::class.java)
-        showLoading()
-        usersViewModel!!.getAllUser()
         usersViewModel!!.getQBUsersList().observe(this, Observer {
             if (fragUsers_rvUserList.isRefreshing)
                 qbUsers.clear()
@@ -66,7 +61,13 @@ class UsersFragment : BaseFragment(), ItemUserClickListener, SwipeRefreshLayout.
     }
 
     override fun onItemClickListener(qbUser: QBUser) {
+        usersViewModel!!.createPrivateChat(qbUser.id).observe(this, Observer {
+            if(it!= null){
+                setQbChatDialog(it)
+                findNavController().navigate(R.id.action_usersFragment_to_chatDetailFragment)
+            }
 
+        })
     }
 
     override fun onRefresh() {
