@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:background="@drawable/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,9 +13,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_logo_start_screen"
-        android:layout_width="@dimen/_64dp"
-        android:layout_height="@dimen/_64dp"
+        android:src="@drawable/ic_logo_splash_screen"
+        android:layout_width="@dimen/_96dp"
+        android:layout_height="@dimen/_96dp"
         tools:ignore="ContentDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

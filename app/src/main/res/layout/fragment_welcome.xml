@@ -2,25 +2,40 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
+    android:background="@drawable/background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingStart="@dimen/_16dp"
-    android:paddingEnd="@dimen/_16dp">
+    android:paddingBottom="@dimen/_23dp"
+    android:paddingStart="@dimen/_23dp"
+    android:paddingEnd="@dimen/_23dp"
+    tools:ignore="MissingPrefix">
+
+    <TextView
+        android:textColor="@color/white"
+        android:id="@+id/fragWelcome_tvTitle"
+        android:textSize="60sp"
+        android:layout_marginTop="@dimen/_96dp"
+        android:text="@string/welcome_title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        fontPath="@string/font_roboto_bold"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/fragWelcome_tvRegister"
         android:textSize="18sp"
         android:text="@string/common_register_title"
-        app:layout_constraintBottom_toTopOf="@id/fragWelcome_lnAppName"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/shape_register_button"
         android:layout_width="@dimen/_0dp"
         android:gravity="center"
-        android:textColor="@color/mainColor"
+        android:textColor="@color/white"
         android:padding="@dimen/_8dp"
         android:layout_marginBottom="@dimen/_16dp"
         android:layout_height="wrap_content"/>
@@ -32,50 +47,12 @@
         app:layout_constraintBottom_toTopOf="@id/fragWelcome_tvRegister"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/shape_login_button"
+        android:background="@drawable/shape_register_button"
         android:layout_width="@dimen/_0dp"
         android:gravity="center"
         android:textColor="@color/white"
         android:padding="@dimen/_8dp"
         android:layout_marginBottom="@dimen/_16dp"
         android:layout_height="wrap_content"/>
-
-    <TextView
-        android:textColor="@color/mainColor"
-        android:id="@+id/fragWelcome_tvTitle"
-        android:textSize="64sp"
-        android:layout_marginTop="@dimen/_96dp"
-        android:text="@string/welcome_title"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <LinearLayout
-        android:id="@+id/fragWelcome_lnAppName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="@dimen/_16dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:background="@drawable/ic_logo_start_screen"
-            android:layout_width="@dimen/_24dp"
-            android:layout_height="@dimen/_24dp" />
-
-        <TextView
-            android:layout_marginStart="@dimen/_8dp"
-            android:text="@string/welcome_description"
-            android:textSize="16sp"
-            android:textColor="@color/black_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "43602626766",
+    "firebase_url": "https://flutterbegin.firebaseio.com",
+    "project_id": "flutterbegin",
+    "storage_bucket": "flutterbegin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:43602626766:android:72f1bd2866bf907d7a689f",
+        "android_client_info": {
+          "package_name": "com.example.hieudo.diamondmessage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "43602626766-cukb332pbbtbeocsfks10i19bajjcnk2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hieudo.diamondmessage",
+            "certificate_hash": "3d397f4f541013f13c14d13631f169c1b296b2e8"
+          }
+        },
+        {
+          "client_id": "43602626766-9f8jctmb50jisc3rq8c69jqb6h64gaah.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIp8jPC7y0SSHNZrhXp36SIZ4jQMPUzKU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "43602626766-9f8jctmb50jisc3rq8c69jqb6h64gaah.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

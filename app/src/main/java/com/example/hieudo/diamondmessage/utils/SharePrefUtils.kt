@@ -32,13 +32,8 @@ class SharePrefUtils {
             setString(context,AppConstant.PREF_USER,Gson().toJson(userModel))
         }
 
-        fun getUser(context: Context?) : UserModel{
-            val jsonUser = getString(context, AppConstant.PREF_USER)
-            var user: UserModel? = null
-            if (!TextUtils.isEmpty(jsonUser)) {
-                return  Gson().fromJson(jsonUser, UserModel::class.java)
-            }
-            return UserModel(0,"","","")
+        fun getUser(context: Context?) : UserModel?{
+            return null
         }
         @SuppressLint("CommitPrefEdits")
         fun removeAllData(context: Context?) {

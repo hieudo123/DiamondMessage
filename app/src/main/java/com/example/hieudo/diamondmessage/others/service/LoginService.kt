@@ -77,30 +77,30 @@ class LoginService : Service(){
         QBChatService.setDebugEnabled(true)
     }
     private fun loginToChat() {
-        if (SharePrefUtils.getUser(applicationContext) != null){
-            val userModel = SharePrefUtils.getUser(applicationContext)
-            Log.d(LoginService::class.java.simpleName, "$userModel")
-            val qbUserLocal: QBUser = QBUser()
-            qbUserLocal.email = userModel.email
-            qbUserLocal.password = userModel.password
-            QBUsers.signIn(qbUserLocal).performAsync(object : QBEntityCallback<QBUser> {
-                override fun onSuccess(qbUser: QBUser?, bundle: Bundle?) {
-                    qbUserLocal.id = qbUser!!.id
-                    userModel.id = qbUser.id
-                    Log.e(LoginService::class.java.simpleName,qbUser.toString())
-                    QBChatService.getInstance().login(qbUserLocal, object : QBEntityCallback<Any?> {
-                        override fun onSuccess(o: Any?, bundle: Bundle) {
-                            Log.e(LoginService::class.java.simpleName,"Loin onSuccess")
-                        }
-                        override fun onError(e: QBResponseException) {
-                            Log.e(LoginService::class.java.simpleName,"Loin onFail ${e.message}")
-                        }
-                    })
-                }
-                override fun onError(p0: QBResponseException?) {Log.e("LOGIN_SERVICE","Loin onFail ${p0!!.message}")}
-            })
-
-        }
+//        if (SharePrefUtils.getUser(applicationContext) != null){
+//            val userModel = SharePrefUtils.getUser(applicationContext)
+//            Log.d(LoginService::class.java.simpleName, "$userModel")
+//            val qbUserLocal: QBUser = QBUser()
+//            qbUserLocal.email = userModel?.email
+//            qbUserLocal.password = userModel?.password
+//            QBUsers.signIn(qbUserLocal).performAsync(object : QBEntityCallback<QBUser> {
+//                override fun onSuccess(qbUser: QBUser?, bundle: Bundle?) {
+//                    qbUserLocal.id = qbUser!!.id
+//                    userModel?.id = qbUser.id
+//                    Log.e(LoginService::class.java.simpleName,qbUser.toString())
+//                    QBChatService.getInstance().login(qbUserLocal, object : QBEntityCallback<Any?> {
+//                        override fun onSuccess(o: Any?, bundle: Bundle) {
+//                            Log.e(LoginService::class.java.simpleName,"Loin onSuccess")
+//                        }
+//                        override fun onError(e: QBResponseException) {
+//                            Log.e(LoginService::class.java.simpleName,"Loin onFail ${e.message}")
+//                        }
+//                    })
+//                }
+//                override fun onError(p0: QBResponseException?) {Log.e("LOGIN_SERVICE","Loin onFail ${p0!!.message}")}
+//            })
+//
+//        }
     }
     override fun onTaskRemoved(rootIntent: Intent) {
         Log.d(LoginService::class.java.simpleName, "Service onTaskRemoved()")

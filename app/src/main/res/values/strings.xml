@@ -12,11 +12,13 @@
     <string name="common_firstname">First name</string>
     <string name="common_lastname">Last name</string>
     <string name="common_hide">Hide</string>
+    <string name="common_ok">OK</string>
 
     <string name="auth_password_valid">Password is at least 8 characters.</string>
-    <string name="auth_email_valid">Email invalid</string>
+    <string name="auth_email_valid">Email invalid.</string>
     <string name="auth_forgot_password_title">Forgot password</string>
     <string name="auth_register_and_login">Register &amp; Login</string>
+    <string name="register_fail_title">Register error</string>
 
     <string name="chat_detail_send_button_title">Send</string>
     <string name="chat_detail_write_a_message">Write a message</string>
@@ -29,5 +31,10 @@
     <string name="setting_title">Settings</string>
     <string name="menu_chat">Chat</string>
     <string name="menu_users">Users</string>
+    <string name="login_screen_to_continue">To continue</string>
+    <string name="reset_password">Reset password</string>
+    <string name="reset_password_description">Type your email in field  below to reset password.</string>
+    <string name="common_confirm_password">Confirm password</string>
+    <string name="auth_confirm_password_valid">Confirmation password  not same as password.</string>
 
 </resources>
